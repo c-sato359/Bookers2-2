@@ -3,8 +3,5 @@ class Book < ApplicationRecord
 	
 	
   validates :title, presence: true
-  validates :body, presence: true
-  validates :body,
-  length: {only_integer:true,
-  greater_than: 0, less_than: 201 }
+  validates :body, presence: true, length: {maximum:200}
 end

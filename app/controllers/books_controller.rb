@@ -5,6 +5,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    
     @book = Book.find(parmas[:id])
     @user = User.find(@book.user_id)
   end
@@ -17,17 +18,19 @@ class BooksController < ApplicationController
     @books = Book.all
     @book = Book.new(book_paramas)
     @book.user_id = current_user.id
+    
     if @book.save
       flash[:notice] = "You have created book successfully."
       redirect_to book_path(@book.id)
     else
-      render :index
+      render "books/index"
     end
   end
   
   def edit
     @book = Book.find(paramas[:id])
     @user =User.find(@book.user_id)
+    
     if @user.id == current_user.id
       render :edit
     else
@@ -53,6 +56,6 @@ class BooksController < ApplicationController
   
   private
   def book_paramas
-     paramas.require(:book).permit(:title, :profile_image, :body)
+     paramas.require(:book).permit(:title, :body)
   end
 end
