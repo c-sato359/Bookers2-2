@@ -6,10 +6,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <% if flash[:notice] %>
     <div class="notification is-info">
@@ -28,6 +27,11 @@
     <% end %>
 
     <% if user_signed_in? %>
+    <div class ="navber-item">
+      <%= link_to "books", books_path, class: "navber-item button is-warning is-light" %>
+    </div>
+    
+    
       <%= link_to "log-out", destroy_user_session_path, method: :delete, class: "button is-warning is-light" %>
     <% else %>
       <%= link_to "log-in", new_user_session_path, class: "button is-warning is-light"  %>
