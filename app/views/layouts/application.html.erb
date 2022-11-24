@@ -11,6 +11,29 @@
   </head>
 
   <body>
+    <% if flash[:notice] %>
+    <div class="notification is-info">
+       <p class="notice"><%= notice %></p>
+    </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="notification is-danger">
+       <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
+
+
+    <%= link_to root_path, class: "navbar-item" do %>
+    <h2 class="title is-4" style="font-family: cursive;">about</h2>
+    <% end %>
+
+    <% if user_signed_in? %>
+      <%= link_to "log-out", destroy_user_session_path, method: :delete, class: "button is-warning is-light" %>
+    <% else %>
+      <%= link_to "log-in", new_user_session_path, class: "button is-warning is-light"  %>
+      <%= link_to "sign-up", new_user_registration_path, class: "button is-warning is-light"  %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
