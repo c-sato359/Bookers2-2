@@ -1,11 +1,9 @@
 
 <div class = "container">
-  <div class = "row">
   <div class="col-xs-3">
-    <%= render "users/user", user: @user %>
+    <h2>User info</h2>
+    
       <h2>New book</h2>
-      <%= render 'books/book', book: @book %>
-      </div>
       <div class="col-xz-9">
         <table class="table book-index">
           <h2>Books</h2>
@@ -13,6 +11,8 @@
             <th></th>
             <th>Title</th>
             <th>Opinion</th>
+             <div class="actions">
+      </div>
           </thead>
           <tbody>
             <% @books.each do |book| %>
