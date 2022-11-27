@@ -1,6 +1,5 @@
 <div class = "container px-5 px-sm-0">
   <div class = "row">
-    <%= render 'books/list', user: current_user %>
     <div class = "col-md-8 offset-md-1">
       <h2>Users</h2>
       <table class = "table">
@@ -14,7 +13,9 @@
         <tbody>
           <% @users.each do |user| %>
           <tr>
-            <td><%= attachment_image_tag user, :profile_image(100,100), fallback: "no-image.png" %></td>
+            <% binding.pry %>
+            <% @profile_images.each do |profile_image| %>
+            <td><%= image_tag profile_image.user.profile_image(100,100), fallback: "no-image.png" %></td>
             <td><%= user.name %></td>
             <td><%= link_to "Show", user_path(user.id) %></td>
           </tr>
@@ -50,3 +51,4 @@
     </div>
     <div class="field"><%= f.submit 'Create Book'%></div>
     <% end %>
+  <% end %>

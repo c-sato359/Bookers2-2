@@ -1,4 +1,13 @@
 class UsersController < ApplicationController
+  
+  # 投稿データの保存
+  def create
+    @profile_image = Profile_Image.new(profile_image_params)
+    @profile_image.user_id = current_user.id
+    @profile_image.save
+    redirect_to profile_images_path
+  end
+
   def index
     if current_user.nil?
     redirect_to user_session_path
@@ -39,6 +48,10 @@ class UsersController < ApplicationController
   end
   
   private
+
+  def profile_image_params
+    params.require(:profile_image).permit(:shop_name, :image, :caption)
+  end
   def user_paramas
     paramas.require(:user).permit(:name,  :introduction, :profile_image)
   end 
