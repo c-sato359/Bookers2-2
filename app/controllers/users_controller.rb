@@ -4,8 +4,12 @@ class UsersController < ApplicationController
   def create
     @profile_image = Profile_Image.new(profile_image_params)
     @profile_image.user_id = current_user.id
-    @profile_image.save
-    redirect_to profile_images_path
+    if @profile_image.save
+      redirect_to profile_images_path
+    else
+      render user_path(current_user)
+    end
+    
   end
 
   def index
