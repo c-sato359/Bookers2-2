@@ -50,10 +50,10 @@ class UsersController < ApplicationController
   private
 
   def profile_image_params
-    params.require(:profile_image).permit(:shop_name, :image, :caption)
+    params(:profile_image).permit(:shop_name, :image, :caption)
   end
-  def user_paramas
-    paramas.require(:user).permit(:name,  :introduction, :profile_image)
+  def user_params
+    params.require(:user).permit(:name,  :introduction, :profile_image)
   end 
   def book_params
     params.permit(:title, :body, :user_id)

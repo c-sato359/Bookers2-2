@@ -58,3 +58,4 @@ gem 'devise'
 
 gem 'net-smtp'
 gem 'image_processing', '~> 1.2'
+gem 'font-awesome-rails'

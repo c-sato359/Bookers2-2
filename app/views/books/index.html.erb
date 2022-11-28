@@ -1,9 +1,12 @@
 
 <div class = "container">
-  <div class="col-xs-3">
-    <h2>User info</h2>
-    
-      <h2>New book</h2>
+  <div class="row">
+    <%= render 'books/error', model: @book %>
+   <div class="col-xs-3">
+    <%= render 'users/user', user: @user %>
+    <h2>New book</h2>
+      <%= render 'books/book', book: @book %>
+   </div>
       <div class="col-xz-9">
         <table class="table book-index">
           <h2>Books</h2>
@@ -11,23 +14,21 @@
             <th></th>
             <th>Title</th>
             <th>Opinion</th>
-             <div class="actions">
-      </div>
           </thead>
           <tbody>
             <% @books.each do |book| %>
             <tr>
               <td>
-                <%= link_to user_path(book.user) do %>
-                <%= attachment image_tag book.user, profile_image, :fill, 50, 50,fallback: "no_image.jpg" %>
-                <% end %>
-              </td>
-              <td><%= link_to book.title, book_path(book.id) %></td>
+               <td><%= link_to  user_path(book.user) do %>
+               <td><%= image_tag @user.get_profile_image(50,50) %></td>
+               <% end %>
+               </td>
+               <td><%= link_to book.title, book_path(book.id) %></td>
               <td><%= book.body %></td>
             </tr>
             <% end %>
           </tbody>
         </table>
       </div>
-  </div>
+   </div>
 </div>
