@@ -1,13 +1,18 @@
-<h1>User info</h1>
-<%= form_for(@user) do |f| %>
-<%= render 'books/error', model: @user %>
- <div class="user-name">Name</div>
-  <%= f.text_field :name %>
- <div class="user-edit-image">Image</div>
- 	<%= image_tag @user.get_profile_image(100,100) %>
- <div class="form_body">Introduction</div>
-  <%= f.text_area :introduction %><br>
- <div class="upload">
-  <%= f.submit "Update User" %>
+<p id="notice"></p>
+<div class="container">
+ <div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+   <%= form_with model: @user do |f| %>
+    <div class="user-name">Name</div>
+    <%= f.text_field :name %>
+    <div class="user-edit-image">Image</div>
+    <%= f.file_field :profile_image, accept: "image/*" %>
+    <div class="form_body">Introduction</div>
+    <%= f.text_area :introduction %><br>
+    <div class="upload"></div>
+    <%= f.submit "Update User" %>
+   <% end %>
+   </div>
+  </div>
  </div>
-<% end %>
+</div>

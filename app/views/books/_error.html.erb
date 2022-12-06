@@ -1,9 +1,13 @@
+<div class="form-group">
+ <div class="field_with_errors">
+ </div>
+</div>
 <% if model.errors.any? %>
  <div class="error">
  	<h3><%= model.errors.count %> errors prohibited this obj from being saved</h3>
  	<ul>
- 		<% model.errors.full_massages.each do |message| %>
- 	 <li><%= massage %></li>
+ 		<% model.errors.full_messages.each do |message| %>
+ 	 <li><%= message %></li>
  		<% end %>
  	</ul>
  </div>
